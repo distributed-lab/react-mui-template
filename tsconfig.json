@@ -16,8 +16,7 @@
     "composite": true,
     "types": [
       "node",
-      "vite/client",
-      "snarkjs"
+      "vite/client"
     ],
     "paths": {
       "@/*": ["src/*"],

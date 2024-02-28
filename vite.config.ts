@@ -69,10 +69,6 @@ export default defineConfig(({ mode }) => {
         '@static': `${root}/../static`,
 
         'near-api-js': 'near-api-js/dist/near-api-js.js',
-
-        util: path.resolve(__dirname, 'node_modules/util/util.js'),
-        ejc: path.resolve(__dirname, 'node_modules/ejs/ejs.min.js'),
-        snarkjs: path.resolve(__dirname, 'node_modules/snarkjs/build/browser.esm.js'),
       },
     },
     optimizeDeps: {
