@@ -57,22 +57,22 @@ __metadata:
   linkType: hard
 
 "@babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.2, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.6, @babel/runtime@npm:^7.23.2, @babel/runtime@npm:^7.23.4, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7":
-  version: 7.23.9
-  resolution: "@babel/runtime@npm:7.23.9"
+  version: 7.24.0
+  resolution: "@babel/runtime@npm:7.24.0"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
-  checksum: e71205fdd7082b2656512cc98e647d9ea7e222e4fe5c36e9e5adc026446fcc3ba7b3cdff8b0b694a0b78bb85db83e7b1e3d4c56ef90726682b74f13249cf952d
+  checksum: 3495eed727bf4a4f84c35bb51ab53317ae38f4bbc3b1d0a8303751f9dfa0ce6f5fb2afced72b76c3dd0d8bb2ccb84787559a4dee9886291a36b26f02f0f759b4
   languageName: node
   linkType: hard
 
 "@babel/types@npm:^7.22.15":
-  version: 7.23.9
-  resolution: "@babel/types@npm:7.23.9"
+  version: 7.24.0
+  resolution: "@babel/types@npm:7.24.0"
   dependencies:
     "@babel/helper-string-parser": "npm:^7.23.4"
     "@babel/helper-validator-identifier": "npm:^7.22.20"
     to-fast-properties: "npm:^2.0.0"
-  checksum: edc7bb180ce7e4d2aea10c6972fb10474341ac39ba8fdc4a27ffb328368dfdfbf40fca18e441bbe7c483774500d5c05e222cec276c242e952853dcaf4eb884f7
+  checksum: 777a0bb5dbe038ca4c905fdafb1cdb6bdd10fe9d63ce13eca0bd91909363cbad554a53dc1f902004b78c1dcbc742056f877f2c99eeedff647333b1fadf51235d
   languageName: node
   linkType: hard
 
@@ -87,53 +87,52 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@distributedlab/fetcher@npm:1.0.0-rc.10, @distributedlab/fetcher@npm:^1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@distributedlab/fetcher@npm:1.0.0-rc.10"
+"@distributedlab/fetcher@npm:1.0.0-rc.12, @distributedlab/fetcher@npm:^1.0.0-rc.12":
+  version: 1.0.0-rc.12
+  resolution: "@distributedlab/fetcher@npm:1.0.0-rc.12"
   dependencies:
     uuid: "npm:^9.0.0"
-  checksum: 9931562ea2b25deb881d9aa72a302bd4d4454b4f532c0300ef023aa090420244c2acf8b88b673a039ba3d6ea475e2993a8e63536962bc889f8b6856b2c45fc90
+  checksum: 4193c9eea4f6f9ff87675ca1ba6bb32153892af29e0e9ffa3724849e6e5c1c7cabd1f3467b1cd7433851cbd166f9b30b64c95fbff92645e878156235c1a6ef17
   languageName: node
   linkType: hard
 
-"@distributedlab/jac@npm:^1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@distributedlab/jac@npm:1.0.0-rc.10"
+"@distributedlab/jac@npm:^1.0.0-rc.12":
+  version: 1.0.0-rc.12
+  resolution: "@distributedlab/jac@npm:1.0.0-rc.12"
   dependencies:
-    "@distributedlab/fetcher": "npm:1.0.0-rc.10"
+    "@distributedlab/fetcher": "npm:1.0.0-rc.12"
     lodash: "npm:^4.17.21"
-  checksum: 3e7efcf0c7813601b7dabf46669daf07476ee30bcb70e80a0a131ca76c5e16a83344e5b66909740126e5c3eb96fc4df588ca536ce00ac17fa526f432e33c6b71
+  checksum: 2a2c0c09d932d1744b19831658f1aebacc2f72d439430cbfcf790a798a694ece9ac4ebf36c2db20c57dd8447f95294bdbf477f8abb1a77493a8bc96a4ddb1313
   languageName: node
   linkType: hard
 
-"@distributedlab/tools@npm:1.0.0-rc.10, @distributedlab/tools@npm:^1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@distributedlab/tools@npm:1.0.0-rc.10"
+"@distributedlab/tools@npm:1.0.0-rc.12, @distributedlab/tools@npm:^1.0.0-rc.12":
+  version: 1.0.0-rc.12
+  resolution: "@distributedlab/tools@npm:1.0.0-rc.12"
   dependencies:
     bignumber.js: "npm:^9.1.1"
     dayjs: "npm:^1.11.7"
     tslib: "npm:^2.5.0"
-  checksum: 4d762b55080ecb1b1e2fa70d1fe4e18218aac03355416ef3b144d4d4c1b828970724ccac19f2d1f3fa612cc1ee62a92a7709819683c13f23479d5847341fbf43
+  checksum: 90015a68e6dcbcc9d6b1e8e5fe914ec0c0f2fbe98e5e5887358b3293bd8d7ee699a8588751743f270d50a67eb1a4f764586425cbefb2f89fb33f86bede7d8ad6
   languageName: node
   linkType: hard
 
-"@distributedlab/w3p@npm:^1.0.0-rc.10":
-  version: 1.0.0-rc.10
-  resolution: "@distributedlab/w3p@npm:1.0.0-rc.10"
+"@distributedlab/w3p@npm:^1.0.0-rc.12":
+  version: 1.0.0-rc.12
+  resolution: "@distributedlab/w3p@npm:1.0.0-rc.12"
   dependencies:
-    "@distributedlab/tools": "npm:1.0.0-rc.10"
+    "@distributedlab/tools": "npm:1.0.0-rc.12"
     "@ethersproject/abstract-provider": "npm:^5.7.0"
     "@ethersproject/properties": "npm:^5.7.0"
     "@near-wallet-selector/core": "npm:^7.8.2"
     "@near-wallet-selector/my-near-wallet": "npm:^7.8.2"
     "@solana/web3.js": "npm:^1.73.2"
+    "@walletconnect/modal": "npm:^2.6.1"
     "@walletconnect/universal-provider": "npm:^2.10.0"
     bs58: "npm:^5.0.0"
     ethers: "npm:^5.7.2"
     near-api-js: "npm:^1.1.0"
-  peerDependencies:
-    "@walletconnect/modal": ^2.6.1
-  checksum: 86f07e56b60621275dda555e08d5e2173451bfb3ace64554c1806c29b949669bab9711ca0ebf4056a4c82a5053e159a719d114841f9c5ccfe45556fad8d3b750
+  checksum: dbd4ec861e5cb5d2a0920121ef497eaae797f03ee587e4cd1cd13f9cfc61992c907448311389ae1d34db1d87b1781a4668613a47d335e3dd3f59e2b69e4ec297
   languageName: node
   linkType: hard
 
@@ -239,11 +238,11 @@ __metadata:
   linkType: hard
 
 "@emotion/is-prop-valid@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "@emotion/is-prop-valid@npm:1.2.1"
+  version: 1.2.2
+  resolution: "@emotion/is-prop-valid@npm:1.2.2"
   dependencies:
     "@emotion/memoize": "npm:^0.8.1"
-  checksum: 7c2aabdf0ca9986ca25abc9dae711348308cf18d418d64ffa4c8ffd2114806c47f2e06ba8ee769f38ec67d65bd59ec73f34d94023e81baa1c43510ac86ccd5e6
+  checksum: bb1530dcb4e0e5a4fabb219279f2d0bc35796baf66f6241f98b0d03db1985c890a8cafbea268e0edefd5eeda143dbd5c09a54b5fba74cee8c69b98b13194af50
   languageName: node
   linkType: hard
 
@@ -255,8 +254,8 @@ __metadata:
   linkType: hard
 
 "@emotion/react@npm:^11.11.1":
-  version: 11.11.3
-  resolution: "@emotion/react@npm:11.11.3"
+  version: 11.11.4
+  resolution: "@emotion/react@npm:11.11.4"
   dependencies:
     "@babel/runtime": "npm:^7.18.3"
     "@emotion/babel-plugin": "npm:^11.11.0"
@@ -271,7 +270,7 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: ce995395b8714343715284beb8478afdfa72b89ed83981a15a170ca0f4a2f77d7a4a198fd50c1f9c6efcd0535768d168ff88c5921dc5f90bb33134c7a75f9455
+  checksum: 6df892fd9e04b5c8c37aacfd7f461631e04e00e845edc3c5b2955ab8ad681abf5cd49584101f579427e08b82f2f88369c78d37ae2fe9360a8f68fd4e51b8e448
   languageName: node
   linkType: hard
 
@@ -2372,11 +2371,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.11.20
-  resolution: "@types/node@npm:20.11.20"
+  version: 20.11.21
+  resolution: "@types/node@npm:20.11.21"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 8e8de211e6d54425c603388a9b5cc9c434101985d0a1c88aabbf65d10df2b1fccd71855c20e61ae8a75c7aea56cb0f64e722cf7914cff1247d0b62ce21996ac4
+  checksum: 52b1cdfe8b14a67ab98c01b2e9621994b34a2537368e108fb925121a9d5958eb7344a2fb81ff36964932d5e5a093de8897f021bded10cad3536fd31e932b3000
   languageName: node
   linkType: hard
 
@@ -2782,7 +2781,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@walletconnect/modal@npm:^2.6.2":
+"@walletconnect/modal@npm:^2.6.1, @walletconnect/modal@npm:^2.6.2":
   version: 2.6.2
   resolution: "@walletconnect/modal@npm:2.6.2"
   dependencies:
@@ -4833,12 +4832,12 @@ __metadata:
   linkType: hard
 
 "enhanced-resolve@npm:^5.12.0":
-  version: 5.15.0
-  resolution: "enhanced-resolve@npm:5.15.0"
+  version: 5.15.1
+  resolution: "enhanced-resolve@npm:5.15.1"
   dependencies:
     graceful-fs: "npm:^4.2.4"
     tapable: "npm:^2.2.0"
-  checksum: 69984a7990913948b4150855aed26a84afb4cb1c5a94fb8e3a65bd00729a73fc2eaff6871fb8e345377f294831afe349615c93560f2f54d61b43cdfdf668f19a
+  checksum: f56a0f3726dc5fb65cb4518ab0806aecfd553f4cd4146f403ffe618ece36610443d8624a89d18fe0bb0be307b1c9ca8fb835267345ca4afc25d2932d58ced715
   languageName: node
   linkType: hard
 
@@ -8470,12 +8469,12 @@ __metadata:
   linkType: hard
 
 "object-is@npm:^1.1.5":
-  version: 1.1.5
-  resolution: "object-is@npm:1.1.5"
+  version: 1.1.6
+  resolution: "object-is@npm:1.1.6"
   dependencies:
-    call-bind: "npm:^1.0.2"
-    define-properties: "npm:^1.1.3"
-  checksum: 8c263fb03fc28f1ffb54b44b9147235c5e233dc1ca23768e7d2569740b5d860154d7cc29a30220fe28ed6d8008e2422aefdebfe987c103e1c5d190cf02d9d886
+    call-bind: "npm:^1.0.7"
+    define-properties: "npm:^1.2.1"
+  checksum: 506af444c4dce7f8e31f34fc549e2fb8152d6b9c4a30c6e62852badd7f520b579c679af433e7a072f9d78eb7808d230dc12e1cf58da9154dfbf8813099ea0fe0
   languageName: node
   linkType: hard
 
@@ -9328,10 +9327,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "react-mui-template@workspace:."
   dependencies:
-    "@distributedlab/fetcher": "npm:^1.0.0-rc.10"
-    "@distributedlab/jac": "npm:^1.0.0-rc.10"
-    "@distributedlab/tools": "npm:^1.0.0-rc.10"
-    "@distributedlab/w3p": "npm:^1.0.0-rc.10"
+    "@distributedlab/fetcher": "npm:^1.0.0-rc.12"
+    "@distributedlab/jac": "npm:^1.0.0-rc.12"
+    "@distributedlab/tools": "npm:^1.0.0-rc.12"
+    "@distributedlab/w3p": "npm:^1.0.0-rc.12"
     "@dnd-kit/core": "npm:^6.1.0"
     "@dnd-kit/modifiers": "npm:^7.0.0"
     "@dnd-kit/sortable": "npm:^8.0.0"

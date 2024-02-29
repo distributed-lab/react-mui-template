@@ -5,6 +5,7 @@ interface Props extends StackProps {
   tabs: {
     label: string
     content: ReactNode
+    isActive?: boolean
   }[]
   ariaLabel?: string
 }
@@ -40,7 +41,7 @@ function CustomTabPanel({
 }
 
 export default function UiTabs({ tabs, ariaLabel, ...rest }: Props) {
-  const [currentTab, setCurrentTab] = useState(0)
+  const [currentTab, setCurrentTab] = useState(tabs.findIndex(({ isActive }) => isActive) || 0)
 
   const handleChange = useCallback((event: SyntheticEvent, newValue: number) => {
     setCurrentTab(newValue)

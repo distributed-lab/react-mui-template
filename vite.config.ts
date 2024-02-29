@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => {
 
   // const isProduction = env.VITE_ENVIRONMENT === 'production'
   // const isDevelopment = env.VITE_ENVIRONMENT === 'development'
-  const isAnalyze = env.VITE_ENVIRONMENT === 'analyze'
+  const isAnalyze = env.VITE_ENVIRONMENT === 'analyze' || env.VITE_MODE === 'analyze'
   // const buildVersion = env.VITE_APP_BUILD_VERSION
 
   return {
@@ -67,8 +67,6 @@ export default defineConfig(({ mode }) => {
         '@': `${root}/`,
         '@config': `${root}/config.ts`,
         '@static': `${root}/../static`,
-
-        'near-api-js': 'near-api-js/dist/near-api-js.js',
       },
     },
     optimizeDeps: {
