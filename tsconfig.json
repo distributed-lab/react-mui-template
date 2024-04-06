@@ -16,7 +16,7 @@
     "composite": true,
     "types": [
       "node",
-      "vite/client"
+      "vite/client",
     ],
     "paths": {
       "@/*": ["src/*"],

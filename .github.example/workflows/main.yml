@@ -47,4 +47,4 @@ jobs:
 #            mkdir ~/.kube/
 #            echo "${{ secrets.K8SCONFIG_DEV }}" | base64 -d > config
 #            mv config ~/.kube/
-#            kubectl set image deployment rarime-web template=ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA -n orgs
+#            kubectl set image deployment example-web template=ghcr.io/$GITHUB_REPOSITORY:$GITHUB_SHA -n orgs

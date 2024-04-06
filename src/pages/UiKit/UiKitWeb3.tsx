@@ -7,7 +7,7 @@ import {
   PROVIDERS,
   RawProvider,
   SolflareProvider,
-  WalletConnectEvmProvider,
+  // WalletConnectEvmProvider,
 } from '@distributedlab/w3p'
 import {
   Alert,
@@ -52,7 +52,7 @@ function Web3Card({
 }
 
 export default function UiKitWeb3() {
-  const providerDetector = useMemo(() => new ProviderDetector(), [])
+  const providerDetector = useMemo(() => new ProviderDetector<PROVIDERS>(), [])
 
   const { isLoading, isLoadingError } = useLoading(
     false,
@@ -97,8 +97,6 @@ export default function UiKitWeb3() {
       <Web3Card providerProxy={PhantomProvider} providerDetector={providerDetector} />
 
       <Web3Card providerProxy={SolflareProvider} providerDetector={providerDetector} />
-
-      <Web3Card providerProxy={WalletConnectEvmProvider} providerDetector={providerDetector} />
     </Stack>
   )
 }

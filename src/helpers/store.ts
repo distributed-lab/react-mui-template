@@ -12,7 +12,7 @@ export const createStore = <S extends object, A>(
     isPersist: true,
   },
 ): [Readonly<S> & A, () => S] => {
-  const storageState = opts?.isPersist ? localStorage.getItem(storeName) : null
+  const storageState = localStorage.getItem(storeName)
 
   let parsedStorageState: S = {} as S
 

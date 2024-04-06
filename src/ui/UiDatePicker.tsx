@@ -3,9 +3,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker, DatePickerProps } from '@mui/x-date-pickers/DatePicker'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import type dayjs from 'dayjs'
 import { forwardRef, useCallback, useMemo } from 'react'
 
-type Props = Omit<DatePickerProps<TimeDate>, 'onChange'> & {
+type Props = Omit<DatePickerProps<dayjs.Dayjs>, 'onChange'> & {
   errorMessage?: string
   onChange?: (v: string) => void
 }
@@ -41,7 +42,7 @@ const UiDatePicker = forwardRef<HTMLInputElement, Props>(
       [rest],
     )
 
-    const pickerProps = useMemo<DatePickerProps<TimeDate>>(() => {
+    const pickerProps = useMemo<DatePickerProps<dayjs.Dayjs>>(() => {
       return {
         ...rest,
         inputRef: ref,
