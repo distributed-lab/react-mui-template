@@ -9410,6 +9410,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-i18n: "npm:^1.0.3"
     eslint-plugin-simple-import-sort: "npm:^12.0.0"
+    ethers: "npm:^5.7.2"
     i18next: "npm:^23.10.1"
     jdenticon: "npm:^3.2.0"
     lodash: "npm:^4.17.21"

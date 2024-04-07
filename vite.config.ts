@@ -24,6 +24,8 @@ export default defineConfig(({ mode }) => {
   const isAnalyze = env.VITE_ENVIRONMENT === 'analyze'
   // const buildVersion = env.VITE_APP_BUILD_VERSION
 
+  console.log(env.VITE_APP_DOMAIN)
+
   return {
     ...(env.VITE_PORT
       ? {
@@ -95,7 +97,7 @@ export default defineConfig(({ mode }) => {
       ],
     },
     build: {
-      sourcemap: true,
+      // sourcemap: true,
       target: 'esnext',
       rollupOptions: {
         plugins: [

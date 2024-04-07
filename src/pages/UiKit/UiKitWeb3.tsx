@@ -1,102 +1,90 @@
+import { BN } from '@distributedlab/tools'
+import { PROVIDERS, RawProvider } from '@distributedlab/w3p'
 import {
-  CoinbaseProvider,
-  MetamaskProvider,
-  PhantomProvider,
-  ProviderDetector,
-  ProviderProxyConstructor,
-  PROVIDERS,
-  RawProvider,
-  SolflareProvider,
-  // WalletConnectEvmProvider,
-} from '@distributedlab/w3p'
-import {
-  Alert,
   Button,
   Card,
   CardActions,
   CardContent,
   CardHeader,
-  CardProps,
   Stack,
   Typography,
 } from '@mui/material'
+import { providers } from 'ethers'
 import { useMemo } from 'react'
 
-import { useLoading, useProvider } from '@/hooks'
+import { useWeb3State, web3Store } from '@/store/modules/web3.module'
+import { Erc20__factory } from '@/types/contracts'
 
-function Web3Card({
-  providerProxy,
-  providerDetector,
-  ...rest
-}: {
-  providerProxy: ProviderProxyConstructor
-  providerDetector: ProviderDetector<PROVIDERS>
-} & CardProps) {
-  const provider = useProvider()
+const useErc20 = (address: string, provider: RawProvider | undefined) => {
+  const contractInstance = useMemo(() => {
+    if (!provider) return
 
-  return (
-    <Card {...rest}>
-      <CardHeader title={providerProxy.providerType} />
+    return Erc20__factory.connect(
+      address,
+      new providers.Web3Provider(provider as providers.ExternalProvider),
+    )
+  }, [address, provider])
 
-      <CardContent>
-        <Typography variant='body1'>Address: {provider.address}</Typography>
-        <Typography variant='body1'>Chain ID: {provider.chainId}</Typography>
-      </CardContent>
+  const contractInterface = useMemo(() => Erc20__factory.createInterface(), [])
 
-      <CardActions>
-        <Button onClick={() => provider.init(providerProxy, { providerDetector })}>init</Button>
-        <Button onClick={() => provider.connect()}>Connect</Button>
-      </CardActions>
-    </Card>
-  )
+  return {
+    contractInstance,
+    contractInterface,
+  }
 }
 
 export default function UiKitWeb3() {
-  const providerDetector = useMemo(() => new ProviderDetector<PROVIDERS>(), [])
+  const { provider } = useWeb3State()
 
-  const { isLoading, isLoadingError } = useLoading(
-    false,
-    async () => {
-      try {
-        await providerDetector.init()
+  const erc20 = useErc20(import.meta.env.VITE_ERC20_CONTRACT_ADDRESS, provider?.rawProvider)
 
-        providerDetector.addProvider({
-          name: PROVIDERS.WalletConnect,
-          instance: {
-            projectId: '41f8085dc01ff1ca42c6efcb2c12c169',
-            relayUrl: 'wss://relay.walletconnect.com',
-            logger: 'info',
-          } as RawProvider,
-        })
+  const loadErc20Details = async () => {
+    const [balance, decimals] = await Promise.all([
+      erc20?.contractInstance?.balanceOf(provider?.address ?? ''),
+      erc20?.contractInstance?.decimals(),
+    ])
 
-        return true
-      } catch (error) {
-        return false
-      }
-    },
-    {
-      loadOnMount: true,
-    },
-  )
+    console.log('balance', balance)
+    console.log('decimals', decimals)
+  }
 
-  if (isLoading)
-    return (
-      <Stack spacing={6} direction='row' flexWrap='wrap'>
-        Loading...
-      </Stack>
-    )
+  const sendSimpleTx = async () => {
+    const txBody = {
+      to: import.meta.env.VITE_ERC20_CONTRACT_ADDRESS,
+      data: erc20?.contractInterface?.encodeFunctionData('transfer', [
+        '0x4148A2eE8D42E63E8d1ADB7F4247A17658730b38',
+        BN.fromRaw(1, 18).value,
+      ]),
+    }
 
-  if (isLoadingError) return <Alert severity='error'>Error loading provider detector</Alert>
+    const receipt = await provider?.signAndSendTx(txBody)
+
+    console.log(receipt)
+  }
 
   return (
     <Stack spacing={6} direction='row' flexWrap='wrap'>
-      <Web3Card providerProxy={MetamaskProvider} providerDetector={providerDetector} />
+      <Card>
+        <CardHeader title={provider?.providerType} />
 
-      <Web3Card providerProxy={CoinbaseProvider} providerDetector={providerDetector} />
+        <CardContent>
+          <Typography variant='body1'>Address: {provider?.address}</Typography>
+          <Typography variant='body1'>Chain ID: {provider?.chainId}</Typography>
+        </CardContent>
 
-      <Web3Card providerProxy={PhantomProvider} providerDetector={providerDetector} />
-
-      <Web3Card providerProxy={SolflareProvider} providerDetector={providerDetector} />
+        <CardActions>
+          <Button onClick={() => web3Store.connect(PROVIDERS.Metamask)}>connect</Button>
+          <Button
+            onClick={async () => {
+              console.log(await provider?.signMessage('lorem ipsum dolor sit amet concestetur!'))
+            }}
+          >
+            sign message
+          </Button>
+          <Button onClick={loadErc20Details}>Load erc20 details</Button>
+          <Button onClick={sendSimpleTx}>send simple tx</Button>
+        </CardActions>
+      </Card>
     </Stack>
   )
 }
