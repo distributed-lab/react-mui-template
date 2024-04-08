@@ -21,10 +21,8 @@ export default defineConfig(({ mode }) => {
 
   // const isProduction = env.VITE_ENVIRONMENT === 'production'
   // const isDevelopment = env.VITE_ENVIRONMENT === 'development'
-  const isAnalyze = env.VITE_ENVIRONMENT === 'analyze'
+  const isAnalyze = env.VITE_ENVIRONMENT === 'analyze' || env.VITE_MODE === 'analyze'
   // const buildVersion = env.VITE_APP_BUILD_VERSION
-
-  console.log(env.VITE_APP_DOMAIN)
 
   return {
     ...(env.VITE_PORT
@@ -97,7 +95,6 @@ export default defineConfig(({ mode }) => {
       ],
     },
     build: {
-      // sourcemap: true,
       target: 'esnext',
       rollupOptions: {
         plugins: [
@@ -105,6 +102,10 @@ export default defineConfig(({ mode }) => {
           // used during production bundling
           nodePolyfills(),
         ],
+
+        output: {
+          sourcemap: true,
+        },
       },
     },
   }
