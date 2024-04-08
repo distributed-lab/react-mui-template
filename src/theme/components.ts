@@ -1,7 +1,5 @@
 import { AlertColor, alpha, Components, Theme } from '@mui/material'
 
-import { ICON_COMPONENTS } from '@/enums'
-
 import { Transitions } from './constants'
 import { vh } from './helpers'
 import { typography } from './typography'
@@ -95,21 +93,38 @@ export const components: Components<Omit<Theme, 'components'>> = {
       textSecondary: ({ theme }) => ({
         color: theme.palette.text.secondary,
         '&:hover': {
-          color: theme.palette.secondary.main,
+          color: theme.palette.text.primary,
+        },
+      }),
+      textError: ({ theme }) => ({
+        color: theme.palette.error.main,
+        '&:hover': {
+          color: theme.palette.error.dark,
+        },
+        '&.Mui-disabled, &.Mui-disabled:hover': {
+          color: theme.palette.error.main,
+          opacity: 0.5,
         },
       }),
       containedPrimary: ({ theme }) => ({
-        '&:disabled': {
+        '&.Mui-disabled': {
           backgroundColor: theme.palette.primary.main,
           color: theme.palette.text.primary,
           opacity: 0.5,
         },
       }),
       containedSecondary: ({ theme }) => ({
-        color: theme.palette.text.secondary,
+        color: theme.palette.text.primary,
         backgroundColor: theme.palette.action.active,
         '&:hover': {
           backgroundColor: theme.palette.action.hover,
+        },
+      }),
+      containedWarning: ({ theme }) => ({
+        color: theme.palette.warning.darker,
+        backgroundColor: theme.palette.warning.lighter,
+        '&:hover': {
+          backgroundColor: theme.palette.warning.light,
         },
       }),
     },
@@ -213,10 +228,6 @@ export const components: Components<Omit<Theme, 'components'>> = {
         },
       }),
     },
-    defaultProps: {
-      variant: 'outlined',
-      IconComponent: ICON_COMPONENTS.keyboardArrowDownOutlined,
-    },
   },
   MuiIconButton: {
     defaultProps: {
@@ -225,6 +236,7 @@ export const components: Components<Omit<Theme, 'components'>> = {
     styleOverrides: {
       root: {
         padding: 0,
+        borderRadius: '1000px',
         transition: Transitions.Default,
         '&:hover': {
           backgroundColor: 'transparent',
@@ -262,10 +274,12 @@ export const components: Components<Omit<Theme, 'components'>> = {
   MuiSkeleton: {
     defaultProps: {
       animation: 'wave',
+      variant: 'rectangular',
     },
     styleOverrides: {
       root: ({ theme }) => ({
         backgroundColor: theme.palette.divider,
+        borderRadius: theme.spacing(4),
       }),
     },
   },
@@ -329,26 +343,6 @@ export const components: Components<Omit<Theme, 'components'>> = {
     defaultProps: {
       variant: 'body3',
     },
-    styleOverrides: {
-      h1: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-      h2: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-      h3: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-      h4: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-      h5: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-      h6: ({ theme }) => ({
-        color: theme.palette.text.secondary,
-      }),
-    },
   },
   MuiTooltip: {
     defaultProps: {
@@ -371,6 +365,20 @@ export const components: Components<Omit<Theme, 'components'>> = {
       paper: ({ theme }) => ({
         borderRadius: theme.spacing(2),
         boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
+        padding: 0,
+        zIndex: 100,
+        backgroundColor: theme.palette.background.paper,
+        border: `1px solid ${theme.palette.divider}`,
+        overflow: 'hidden',
+      }),
+    },
+  },
+  MuiMenuItem: {
+    styleOverrides: {
+      root: ({ theme }) => ({
+        '&:hover': {
+          backgroundColor: theme.palette.action.active,
+        },
       }),
     },
   },
@@ -421,8 +429,9 @@ export const components: Components<Omit<Theme, 'components'>> = {
       root: ({ theme }) => ({
         width: '100%',
         borderRadius: theme.spacing(4),
-        backgroundColor: theme.palette.additional.pureBlack,
-        color: alpha(theme.palette.common.white, 0.7),
+        backgroundColor: theme.palette.background.paper,
+        color: alpha(theme.palette.text.primary, 0.7),
+        boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.04)',
       }),
       icon: ({ ownerState, theme }) => {
         const severityToBgColor: Record<AlertColor, string> = {
@@ -451,15 +460,60 @@ export const components: Components<Omit<Theme, 'components'>> = {
     styleOverrides: {
       root: ({ theme }) => ({
         ...typography.subtitle4,
-        color: theme.palette.common.white,
+        color: theme.palette.text.primary,
       }),
     },
   },
-  MuiChip: {
+  MuiLinearProgress: {
+    defaultProps: {
+      variant: 'determinate',
+    },
     styleOverrides: {
-      colorSuccess: ({ theme }) => ({
-        backgroundColor: theme.palette.success.light,
-        color: theme.palette.success.dark,
+      root: ({ theme }) => ({
+        borderRadius: 250,
+        height: theme.spacing(2),
+        backgroundColor: theme.palette.action.active,
+      }),
+      barColorPrimary: ({ theme }) => ({
+        borderRadius: 250,
+        backgroundColor: theme.palette.primary.dark,
+      }),
+    },
+  },
+  MuiDialog: {
+    styleOverrides: {
+      paper: ({ theme }) => ({
+        padding: 0,
+        borderRadius: theme.spacing(3),
+        backgroundColor: theme.palette.background.paper,
+        boxShadow: `inset 0 0 0 1px ${theme.palette.action.active}`,
+        border: 0,
+      }),
+    },
+  },
+  MuiChartsTooltip: {
+    styleOverrides: {
+      root: () => ({
+        '& .MuiChartsTooltip-root': {
+          backgroundColor: 'transparent',
+          border: 'none',
+        },
+      }),
+      table: ({ theme }) => ({
+        backgroundColor: theme.palette.additional.pureBlack,
+        padding: theme.spacing(2, 6),
+        borderRadius: theme.spacing(250),
+      }),
+      cell: ({ theme }) => ({
+        '&.MuiChartsTooltip-labelCell, &.MuiChartsTooltip-markCell': {
+          display: 'none',
+        },
+        '&.MuiChartsTooltip-valueCell': {
+          padding: '0 !important',
+          display: 'flex',
+          color: theme.palette.common.white,
+          '& .MuiTypography-root': typography.buttonSmall,
+        },
       }),
     },
   },

@@ -3,9 +3,10 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker, DatePickerProps } from '@mui/x-date-pickers/DatePicker'
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import type dayjs from 'dayjs'
 import { forwardRef, useCallback, useMemo } from 'react'
 
-type Props = Omit<DatePickerProps<TimeDate>, 'onChange'> & {
+type Props = Omit<DatePickerProps<dayjs.Dayjs>, 'onChange'> & {
   errorMessage?: string
   onChange?: (v: string) => void
 }
@@ -17,19 +18,19 @@ const UiDatePicker = forwardRef<HTMLInputElement, Props>(
     const minDate = useMemo(() => {
       if (!rest.minDate) return undefined
 
-      return time(rest.minDate).dayjs
+      return time(rest.minDate as TimeDate).dayjs
     }, [rest])
 
     const maxDate = useMemo(() => {
       if (!rest.maxDate) return undefined
 
-      return time(rest.maxDate).dayjs
+      return time(rest.maxDate as TimeDate).dayjs
     }, [rest])
 
     const value = useMemo(() => {
       if (!rest.value) return undefined
 
-      return time(rest.value).dayjs
+      return time(rest.value as TimeDate).dayjs
     }, [rest.value])
 
     const handleChange = useCallback(
@@ -41,12 +42,12 @@ const UiDatePicker = forwardRef<HTMLInputElement, Props>(
       [rest],
     )
 
-    const pickerProps = useMemo<DatePickerProps<TimeDate>>(() => {
+    const pickerProps = useMemo<DatePickerProps<dayjs.Dayjs>>(() => {
       return {
         ...rest,
         inputRef: ref,
         value: value || time().dayjs,
-        onChange: v => handleChange(v),
+        onChange: v => handleChange(v as TimeDate),
         minDate,
         maxDate,
 
