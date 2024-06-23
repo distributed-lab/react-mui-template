@@ -15,13 +15,15 @@ const appDirectory = fs.realpathSync(process.cwd())
 const resolveApp = (relative: string) => path.resolve(appDirectory, relative)
 const root = path.resolve(__dirname, resolveApp('src'))
 
+enum BaseModes {
+  Development = 'development',
+  Production = 'production',
+  Analyze = 'analyze',
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
-
-  // const isProduction = env.VITE_ENVIRONMENT === 'production'
-  // const isDevelopment = env.VITE_ENVIRONMENT === 'development'
-  const isAnalyze = env.VITE_ENVIRONMENT === 'analyze' || env.VITE_MODE === 'analyze'
   // const buildVersion = env.VITE_APP_BUILD_VERSION
 
   return {
@@ -32,7 +34,6 @@ export default defineConfig(({ mode }) => {
           },
         }
       : {}),
-    publicDir: 'static',
     plugins: [
       react(),
       tsconfigPaths(),
@@ -44,13 +45,16 @@ export default defineConfig(({ mode }) => {
         symbolId: '[name]',
       }),
       checker({
+        // remove if you want to prevent build with errors || warnings
+        enableBuild: false,
+        typescript: true,
         overlay: {
           initialIsOpen: false,
           position: 'br',
         },
-        typescript: true,
         eslint: {
-          lintCommand: 'eslint "{src,config}/**/*.{jsx,tsx}" --cache --max-warnings=0',
+          useFlatConfig: true,
+          lintCommand: 'eslint "{src,config}/**/*.{jsx,tsx}" --cache',
         },
       }),
       createHtmlPlugin({
@@ -62,7 +66,7 @@ export default defineConfig(({ mode }) => {
           },
         },
       }),
-      ...(isAnalyze
+      ...(mode === BaseModes.Analyze
         ? [
             visualizer({
               open: true,

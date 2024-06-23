@@ -9,5 +9,5 @@ export type Config = {
 export const config: Config = {
   APP_NAME: import.meta.env.VITE_APP_NAME,
   API_URL: import.meta.env.VITE_API_URL,
-  BUILD_VERSION: packageJson.version || import.meta.env.VITE_APP_BUILD_VERSION,
+  BUILD_VERSION: packageJson.version || import.meta.env.VITE_BUILD_VERSION,
 }

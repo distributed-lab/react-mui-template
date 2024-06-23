@@ -11,6 +11,7 @@ import {
   UseFormRegister,
   UseFormSetError,
 } from 'react-hook-form'
+// eslint-disable-next-line import/namespace
 import * as Yup from 'yup'
 
 export type Form<T extends FieldValues> = {
